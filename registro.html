@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Registro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/normaliza.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+  <header class="header">
+
+    <div class="contenedor">
+        <div class="barra">
+            <a class="logo" href="index.html">
+
+                <h1 class="logo__nombre  centrar-texto">Espacio Arquitectonico <span class="logo__bold">MEXICO</span></h1>
+            </a>
+            
+            <nav class="navegacion">
+                <a href="edificios.html" class="navegacion__enlace">Edificios</a>
+                <a href="espacioUrbano.html" class="navegacion__enlace">Espacios urbanos</a>
+                <a href="Bibliografia.html" class="navegacion__enlace">Biografia</a>
+                <a href="login.html" class="navegacion__enlace">Iniciar Sesion</a>
+            </nav>
+
+        </div>
+
+    </div>
+
+    <div class="header__texto">
+        <h2 class="no-margin"> Espacio Arquitectonico y urbano del siglo XIX</h2>
+        <h4 class="no-margin"> Y PRINCIPIOS DEL SIGLO XX </h4>
+    </div>
+</header>  
+    <h2>Registro</h2>
+  <form action="register.php" method="POST">
+    <label for="username">Usuario:</label>
+    <input type="text" id="username" name="username" required><br><br>
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    <input type="submit" value="Registrarse">
+  </form>
+
+  <footer class="footer">    
+    <div class="contenedor">
+        <div class="barra">
+            <a href="logo" href="index.html">
+
+                <h1 class="logo__nombre no-margin centrar-texto">México <span class="logo__bold">Arquitectura</span></h1>
+            </a>
+            
+            <nav class="navegacion">
+               <a href="nosotros.html" class="navegacion__enlace">Nosotros</a>
+                <a href="cursos.html" class="navegacion__enlace">Cursos</a> 
+                <a href="Bibliografia.html" class="navegacion__enlace">Contacto</a>
+                
+                
+                <a href="https://www.facebook.com"> <svg class="iconos" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="68" height="68" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                  </svg>
+                  </a>
+
+            </nav>
+
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>
