@@ -1,38 +1,20 @@
 :root {
-    --primario: #1A110D;
-    --primarioOscuro: #784C3C;
-    --secundario: #00533f;
+    --edificios: #1A110D;
+    --edificiosOscuro: #784C3C;
     --secundarioOscuro: rgb(233,287,2);
     --blanco: #fff;
-    --negro: #000;
 
-    --funtePrincipal: 'Racing Sans One', cursive;
+    --funtePrincipal: 'Open Sans', sans-serif;
 }
 
-html {
-    box-sizing: border-box;
-    font-size: 62.5%;
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
 
-body{
-    background-color: var(--primario);
-    font-size: 1.2rem;
-    line-height: 1.9;
-}
 
 
 p{
-    font-size: 1.2rem;
+    font-size: 2.2rem;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--blanco);
 }   
-
-a{
-    text-decoration: none;
-}
 
 img{
     width: 100%;
@@ -42,26 +24,6 @@ img{
     max-width: 120rem;
     margin: 0 auto;
 }
-
-h1,h2,h3{
-    text-align: center;
-    color: var(--secundario);
-    font-family: var(--funtePrincipal);
-}
-
-h1{
-    font-size: 4rem;
-}
-h2{
-    font-size: 1.5rem;
-}
-h3{
-    font-size: 2.4rem;
-}
-
-
-
-
 
 
 /** Grid **/
@@ -81,7 +43,7 @@ h3{
 
 /** edificio **/
 .edificio{
-    background-color: var(--primarioOscuro);
+    background-color: var(--edificiosOscuro);
     padding: 1rem;
     margin: 1rem;
 }
@@ -95,11 +57,10 @@ h3{
 
 .edificio__ciudad{
     font-size: 2.8rem;
-    color: var(--secundario);
 }
 
 .edificio__nombre, .edificio__ciudad{
-    font-family: var(--funtePrincipal);
+    font-family: var(--fuenteParrafos);
     margin: 1rem 0;
     text-align: center;
     line-height: 2.5rem;
@@ -114,7 +75,6 @@ h3{
     background: none;
     background-size: cover;
     grid-column: 1 /3;
-    
 }
 
 .grafico--camisas{
