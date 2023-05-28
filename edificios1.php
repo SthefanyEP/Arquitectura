@@ -1,12 +1,22 @@
 <?php
-    require ' config/database.php';
-    $db = new Database();
-    $con = $db->conectar();
+$servername = "localhost";
+$username = "root";
+$password = "Wraprocki12@21";
+$dbname = "myDB";
 
-    $sql = $con->prepare("SELECT id,nombre,precio FROM productos WHERE activo=1");
-    $sql->execute();
-    $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = mysqli_query($conn, $sql);
+
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,17 +24,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edificios</title>
-    <link rel="stylesheet" href="css/normalize.css">
+    <title>Arquitectura</title>
+
+    <link rel="prefetch" href="edificios.html" as="document">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/normaliza.css" as="style">
+    <link rel="stylesheet" href="css/normaliza.css">
+
+    <link rel="preload" href="css/styles.css" as="style">
     <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="preload" href="css/styles2.css" as="style">
     <link rel="stylesheet" href="css/styles2.css">
 
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" as="font"
     crossorigin="crossoringin">
+
 
 </head>
 <body>
@@ -54,156 +73,180 @@
         </div>
     </header>
 
-
     <main class="contenedor">
-        <h1>Edificios</h1>
-        <h2>En este apartado se muestran todos las edificaciones analizadas</h2>     
-           <div class="grid">
 
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/1.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Teatro de la Republica</p>
-                        <p class="producto__precio">CDMX</p>
+
+        <div class="grid">
+
+
+
+        <?php
+            if (mysqli_num_rows($result) > 0) {
+
+
+// output data of each row
+  while($row = mysqli_fetch_assoc($result)) {
+?>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/4.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre"> <?php echo "id: " . $row["firstname"] ?> </p>
+                        <p class="edificio__ciudad"><?php echo "id: " . $row["lastname"] ?> </p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
+          
+<?php
+  }
+} else {
+  echo "0 results";
+}
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/2.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Mercado la Victoria</p>
-                        <p class="producto__precio">CDMX</p>
+mysqli_close($conn);
+?>
+
+
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/1.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">Vue25</p>
+                        <p class="edificio__ciudad">$25</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/3.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Almacen Ciudad de Mexico</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/2.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">Angular25</p>
+                        <p class="edificio__ciudad">$30</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/4.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Fabricas Universales de Mexico</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/3.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">Angular25</p>
+                        <p class="edificio__ciudad">$30</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
 
-
-        <?php foreach($resultado as $row) { ?>
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/5.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Kiosko Morisco</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/4.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">Redux</p>
+                        <p class="edificio__ciudad">$25</p>
                     </div>
                 </a>
-            </div> <!--producto-->
-        <?php } ?>
+            </div> <!--edificio-->
 
-
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/6.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Museo Universitario del Chopo</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/5.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">Node</p>
+                        <p class="edificio__ciudad">$30</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/7.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Iglesia San Felipe de Jesus</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/6.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">Sass</p>
+                        <p class="edificio__ciudad">$30</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/8.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Teatro Juarez</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/7.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">HTML 5</p>
+                        <p class="edificio__ciudad">$25</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/9.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Teatro Juarez</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/8.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">Github</p>
+                        <p class="edificio__ciudad">$30</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/10.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Donceles 66</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/9.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">BulmaCSS</p>
+                        <p class="edificio__ciudad">$30</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/11.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Palacio de mineria</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/10.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">TypeScript</p>
+                        <p class="edificio__ciudad">$25</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/12.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Java Script</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/11.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">Drupal</p>
+                        <p class="edificio__ciudad">$30</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/13.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">La esmeralda</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/12.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">Java Script</p>
+                        <p class="edificio__ciudad">$30</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
 
-            <div class="producto"> <!--producto-->
-                <a href="producto.html">
-                    <img class="producto__imagen" src="img2/14.jpg" alt="imagen camisa">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre">Casa de Antonio Rivas Mercado</p>
-                        <p class="producto__precio">CDMX</p>
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/13.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">GraphQL</p>
+                        <p class="edificio__ciudad">$30</p>
                     </div>
                 </a>
-            </div> <!--producto-->
+            </div> <!--edificio-->
+
+            <div class="edificio"> <!--edificio-->
+                <a href="entrada.html">
+                    <img class="edificio__imagen" src="img2/14.jpg" alt="imagen camisa">
+                    <div class="edificio__informacion">
+                        <p class="edificio__nombre">WordPress</p>
+                        <p class="edificio__ciudad">$30</p>
+                    </div>
+                </a>
+            </div> <!--edificio-->
 
             <div class="grafico grafico--camisas"></div>
             <div class="grafico grafico--node"></div>
@@ -212,6 +255,34 @@
         </div>
     </main>
 
-    
+
+    <footer class="footer">    
+        <div class="contenedor">
+            <div class="barra">
+                <a href="logo" href="index.html">
+
+                    <h1 class="logo__nombre no-margin centrar-texto">México <span class="logo__bold">Arquitectura</span></h1>
+                </a>
+                
+                <nav class="navegacion">
+                   <!-- <a href="nosotros.html" class="navegacion__enlace">Nosotros</a>
+                    <a href="cursos.html" class="navegacion__enlace">Cursos</a> -->
+                    <a href="Bibliografia.html" class="navegacion__enlace">Contacto</a>
+                    
+                    
+                    <a href="https://www.facebook.com"> <svg class="iconos" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="68" height="68" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                      </svg>
+                      </a>
+
+                </nav>
+
+            </div>
+
+        </div>
+    </footer>
+
+
 </body>
 </html>
